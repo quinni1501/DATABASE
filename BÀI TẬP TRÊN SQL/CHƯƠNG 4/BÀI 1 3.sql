@@ -1,0 +1,7 @@
+SELECT HoNV,Tenlot, TenNV
+FROM NHANVIEN inner join (SELECT MaNV
+						  FROM NHANVIEN
+						  EXCEPT
+						  SELECT MaNV
+						  FROM PHANCONG) Buf
+ON NHANVIEN.MaNV = Buf. MaNV

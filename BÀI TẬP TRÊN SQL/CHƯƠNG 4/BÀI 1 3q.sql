@@ -1,0 +1,17 @@
+SELECT BAF.MaPB, BAF.TenPB, COALESCE(SL, 0) AS SL_Nam
+FROM (SELECT Phong, COUNT(MaNV) AS SL
+      FROM NHANVIEN
+      WHERE Phai = 'Nam'
+      GROUP BY Phong) AS BUF
+RIGHT JOIN (
+    SELECT PHONGBAN.MaPB, PHONGBAN.TenPB
+    FROM PHONGBAN
+    INNER JOIN (
+        SELECT Phong
+        FROM NHANVIEN
+        GROUP BY Phong
+        HAVING AVG(Luong) > 30000
+    ) AS BIF ON PHONGBAN.MaPB = BIF.Phong
+) AS BAF ON BUF.Phong = BAF.MaPB;
+
+

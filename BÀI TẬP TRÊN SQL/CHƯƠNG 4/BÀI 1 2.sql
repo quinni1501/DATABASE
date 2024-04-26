@@ -1,0 +1,3 @@
+SELECT MaNV, HoNV, Tenlot, TenNV, Thoigian
+FROM NHANVIEN AS NV, (SELECT MaNV AS NV, SUM(Thoigian) Thoigian FROM PHANCONG GROUP BY MaNV) Buf
+WHERE NV.MaNV = Buf.NV

@@ -1,0 +1,3 @@
+﻿SELECT SUM(Luong) AS TỔNG_LƯƠNG, MAX(Luong) AS LƯƠNG_CAO_NHẤT,
+MIN(Luong) AS LƯƠNG_THẤP_NHẤT, AVG(Luong) AS LƯƠNG_TB
+FROM NHANVIEN
